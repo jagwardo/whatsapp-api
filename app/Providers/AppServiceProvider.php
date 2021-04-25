@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Messages\WhatsAppGateway;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,6 +14,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(WhatsAppGateway::class, function ($app){
+            return new WhatsAppGateway();
+        });
     }
+    
 }
